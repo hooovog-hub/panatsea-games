@@ -21,6 +21,15 @@
     .txt { flex: 1; display: flex; flex-direction: column; gap: 3px; font-size: 13px; line-height: 1.35; color: var(--pn-text-muted); }
     .txt b { font-size: 16px; color: var(--pn-text-strong); }
     .go { flex: none; font-size: 14px; font-weight: 600; color: var(--pn-accent); }
+    .card.main { background: var(--pn-accent); color: #fff; padding: 20px 18px; margin-bottom: 22px;
+      box-shadow: 0 10px 28px rgba(6,169,144,.28); }
+    .card.main .num { background: #fff; color: var(--pn-accent); width: 48px; height: 48px; font-size: 22px; }
+    .card.main .txt, .card.main .txt b, .card.main .go { color: #fff; }
+    .card.main .txt b { font-size: 19px; }
+    .card.main .go { background: #fff; color: var(--pn-accent); padding: 9px 12px; border-radius: 10px; }
+    .badge { align-self: flex-start; background: rgba(255,255,255,.22); color: #fff; font-size: 11px; font-weight: 700;
+      letter-spacing: .04em; text-transform: uppercase; padding: 3px 8px; border-radius: 6px; margin-bottom: 2px; }
+    h2 { font-size: 13px; font-weight: 600; color: var(--pn-text-muted); text-transform: uppercase; letter-spacing: .05em; margin: 4px 0 10px; }
     .note { font-size: 12px; color: var(--pn-text-muted); margin-top: 18px; line-height: 1.5; }
   </style>
 </head>
@@ -30,24 +39,15 @@
     <h1>Варианты игры «Առավոտյան վազք»</h1>
     <p class="lead">Выберите вариант и сыграйте с телефона. Сравниваем сцену и ощущение от забега.</p>
 
-      <a class="card" href="v1/">
-        <span class="num">1</span>
-        <span class="txt"><b>Вариант 1</b><span>Первая сцена: ереванские здания вперемешку, сплошной фон.</span></span>
+      <a class="card main" href="v7/">
+        <span class="num">7</span>
+        <span class="txt"><span class="badge">Главный вариант</span><b>Вариант 7</b><span>Как вариант 6, но длинный забор между 0030 и 0020.</span></span>
         <span class="go">Играть →</span>
       </a>
-      <a class="card" href="v2/">
-        <span class="num">2</span>
-        <span class="txt"><b>Вариант 2</b><span>Все здания первого ряда по одному разу, Опера в начале, Каскад у финиша.</span></span>
-        <span class="go">Играть →</span>
-      </a>
-      <a class="card" href="v3/">
-        <span class="num">3</span>
-        <span class="txt"><b>Вариант 3</b><span>Глубина: часть зданий отодвинута, деревья на стыках, окно на Арарат, лента Panatsea.</span></span>
-        <span class="go">Играть →</span>
-      </a>
-      <a class="card" href="v4/">
-        <span class="num">4</span>
-        <span class="txt"><b>Вариант 4</b><span>Лёгкая глубина вперёд/назад, низкие дома под горой, статуя у Каскада, обелиск сзади.</span></span>
+      <h2>Другие варианты</h2>
+      <a class="card" href="v6/">
+        <span class="num">6</span>
+        <span class="txt"><b>Вариант 6</b><span>0018 в первом кадре, Каскад на 40% крупнее, Матенадаран перед 0004.</span></span>
         <span class="go">Играть →</span>
       </a>
       <a class="card" href="v5/">
@@ -55,14 +55,24 @@
         <span class="txt"><b>Вариант 5</b><span>Матенадаран под горой, атмосферный город, 0018 в первом ряду, финиш у Каскада.</span></span>
         <span class="go">Играть →</span>
       </a>
-      <a class="card" href="v6/">
-        <span class="num">6</span>
-        <span class="txt"><b>Вариант 6</b><span>0018 в первом кадре, Каскад на 40% крупнее, Матенадаран перед 0004.</span></span>
+      <a class="card" href="v4/">
+        <span class="num">4</span>
+        <span class="txt"><b>Вариант 4</b><span>Лёгкая глубина вперёд/назад, низкие дома под горой, статуя у Каскада, обелиск сзади.</span></span>
         <span class="go">Играть →</span>
       </a>
-      <a class="card" href="v7/">
-        <span class="num">7</span>
-        <span class="txt"><b>Вариант 7</b><span>Как вариант 6, но длинный забор между 0030 и 0020.</span></span>
+      <a class="card" href="v3/">
+        <span class="num">3</span>
+        <span class="txt"><b>Вариант 3</b><span>Глубина: часть зданий отодвинута, деревья на стыках, окно на Арарат, лента Panatsea.</span></span>
+        <span class="go">Играть →</span>
+      </a>
+      <a class="card" href="v2/">
+        <span class="num">2</span>
+        <span class="txt"><b>Вариант 2</b><span>Все здания первого ряда по одному разу, Опера в начале, Каскад у финиша.</span></span>
+        <span class="go">Играть →</span>
+      </a>
+      <a class="card" href="v1/">
+        <span class="num">1</span>
+        <span class="txt"><b>Вариант 1</b><span>Первая сцена: ереванские здания вперемешку, сплошной фон.</span></span>
         <span class="go">Играть →</span>
       </a>
     <p class="note">Тестовая версия для команды: призы и промокоды не выдаются, результат никуда не отправляется.</p>
