@@ -125,3 +125,11 @@ h2 { font-size: 14px; font-weight: 500; margin: 18px 0 10px; color: var(--pn-tex
   box-shadow: 0 4px 14px rgba(29,42,33,.12);
 }
 .sound-btn[aria-pressed="false"] { color: var(--pn-text-muted); }
+
+/* баннер с протеиновыми йогуртами на экране финиша — во всю ширину карточки; подпись под фото, этикетки не закрыты */
+.promo-banner { margin: -24px -22px 16px; border-radius: 24px 24px 0 0; overflow: hidden; background: #fff; }
+.promo-banner img { width: 100%; height: 270px; object-fit: cover; object-position: 50% 64%; display: block; }
+.promo-cap { padding: 10px 16px 12px; text-align: center; display: flex; flex-direction: column; gap: 2px; border-bottom: 1px solid rgba(29,42,33,.06); }
+.promo-cap b { font-family: var(--pn-font-head); font-size: 19px; font-weight: 600; line-height: 1.2; color: var(--pn-logo); }
+.promo-cap span { font-size: 12px; color: var(--pn-text-muted); }
+@media (max-height: 700px) { .promo-banner { margin: -18px -18px 12px; } .promo-banner img { height: 220px; } }

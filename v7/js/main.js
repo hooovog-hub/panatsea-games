@@ -166,14 +166,15 @@ function codeBlock(label, code) {
 function showResult(r) {
   mode = 'result';
   const time = r.timeSec != null ? fmt(r.timeSec) : '';
-  let html = '';
+  // крупный баннер с протеиновыми йогуртами — в конце каждого забега, чтобы запомнилась этикетка
+  let html = `<div class="promo-banner"><img src="${BANNER}" alt="${esc(T.bannerTitle)}">
+    <div class="promo-cap"><b>${esc(T.bannerTitle)}</b><span>${esc(T.bannerSub)}</span></div></div>`;
   if (r.outcome === 'out') {
-    html = `<h1>${esc(T.outTitle)}</h1><p class="result-text">${esc(T.outText)}</p>`;
+    html += `<h1>${esc(T.outTitle)}</h1><p class="result-text">${esc(T.outText)}</p>`;
   } else {
     html += `<p class="result-time">${esc(T.yourTime(time))}</p>`;
     if (r.outcome === 'yogurt') {
       html += `<h1>${esc(T.winTitle)}</h1>
-        <div class="prize" style="margin-top:10px">${[12, 13, 14].map((n) => `<span class="ph p${n}"><img src="${PHOTOS[n]}" alt=""></span>`).join('')}</div>
         <div class="gift"><div class="gift-title">${esc(T.winText(r.qty ?? 2))}</div>${codeBlock(T.codeLabel, r.code)}</div>
         <p class="note">${esc(T.winHow)}</p>`;
     } else if (r.outcome === 'promo') {
@@ -200,6 +201,7 @@ function showResult(r) {
   show('screen-result');
 }
 
+const BANNER = 'products/trio.webp';   // фото трёх протеиновых йогуртов
 const PHOTOS = { 12: 'products/p12.jpg', 13: 'products/p13.jpg', 14: 'products/p14.jpg' };   // настоящие фото продуктов
 
 let toastTimer;
