@@ -133,3 +133,53 @@ h2 { font-size: 14px; font-weight: 500; margin: 18px 0 10px; color: var(--pn-tex
 .promo-cap b { font-family: var(--pn-font-head); font-size: 19px; font-weight: 600; line-height: 1.2; color: var(--pn-logo); }
 .promo-cap span { font-size: 12px; color: var(--pn-text-muted); }
 @media (max-height: 700px) { .promo-banner { margin: -18px -18px 12px; } .promo-banner img { height: 220px; } }
+
+/* ===== Вариант 7: только армянский без засечек, меньше текста, чёткие блоки ===== */
+:root { --pn-font-head: "Noto Sans Armenian", system-ui, -apple-system, sans-serif; --pn-font-text: "Noto Sans Armenian", system-ui, -apple-system, sans-serif; }
+body { font-family: var(--pn-font-text); }
+h1 { font-family: var(--pn-font-head); font-weight: 800; font-size: 25px; letter-spacing: -0.01em; line-height: 1.15; margin: 0 0 12px; }
+.card { padding: 20px 18px 16px; }
+.card.start .logo { height: 18px; margin-bottom: 10px; }
+.card.start .prize { margin-bottom: 12px; }
+.ph { width: 72px; height: 72px; border-radius: 16px; }
+
+/* цель + награда — один блок из двух половин */
+.goal-box { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(29,42,33,.08); border-radius: 14px; overflow: hidden; margin-bottom: 14px; }
+.goal-box > div { background: rgba(255,255,255,.75); padding: 9px 10px; display: flex; flex-direction: column; gap: 1px; text-align: left; }
+.goal-box span { font-size: 11px; color: var(--pn-text-muted); }
+.goal-box b { font-size: 14px; font-weight: 700; color: var(--pn-logo); line-height: 1.25; }
+.goal-gift b { color: var(--pn-accent); }
+
+.section-label { font-size: 11px; font-weight: 600; letter-spacing: .04em; color: var(--pn-text-muted); text-align: left; margin: 0 2px 6px; }
+.runners { gap: 8px; margin-bottom: 12px; }
+.runner-btn { max-width: none; padding: 4px 6px 8px; font-size: 14px; font-weight: 600; border-radius: 14px; }
+.runner-btn canvas { width: 64px; height: 64px; }
+
+.chips { display: flex; gap: 6px; justify-content: center; margin-bottom: 14px; }
+.chip { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,.7); border-radius: 999px; padding: 5px 11px 5px 5px; font-size: 12px; color: var(--pn-text); }
+.chip b { background: var(--pn-bg-mint); color: var(--pn-accent); border-radius: 999px; font-size: 11px; font-weight: 700; padding: 3px 7px; }
+
+.btn { font-size: 16px; font-weight: 700; padding: 13px 16px; border-radius: 13px; }
+.rules { margin-top: 10px; font-size: 11px; }
+
+/* экран финиша */
+.promo-banner img { height: 230px; }
+.promo-cap { padding: 8px 14px 10px; }
+.promo-cap b { font-size: 16px; font-weight: 700; }
+.promo-cap span { font-size: 11px; }
+.res-head { display: flex; flex-direction: column; align-items: center; gap: 4px; margin-bottom: 12px; }
+.res-head h1 { margin: 0; font-size: 22px; }
+.time-chip { font-size: 12px; font-weight: 700; color: var(--pn-logo); background: rgba(255,255,255,.8); border-radius: 999px; padding: 4px 10px; font-variant-numeric: tabular-nums; }
+.result-text { font-size: 13px; margin: 0; color: var(--pn-text-muted); }
+.gift { padding: 12px; margin: 0 0 12px; border-radius: 14px; }
+.gift-title { font-size: 14px; font-weight: 700; }
+.gift-where { font-size: 11px; color: var(--pn-text-muted); margin-top: 1px; }
+.code { font-size: 19px; padding: 8px; margin: 6px 0 4px; }
+.code-label { margin-top: 8px; font-size: 11px; }
+.copy { font-size: 13px; }
+.gift .note { font-size: 11px; margin: 6px 0 0; }
+.btn-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.btn-row .btn { margin: 0; text-align: center; text-decoration: none; display: block; }
+.btn.secondary { margin-top: 0; }
+#btn-again { margin-top: 0; }
+@media (max-height: 700px) { .promo-banner img { height: 190px; } .ph { width: 62px; height: 62px; } }

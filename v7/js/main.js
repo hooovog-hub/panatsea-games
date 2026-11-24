@@ -31,7 +31,7 @@ async function api(path, body) {
 
 // ---------- тексты ----------
 document.querySelectorAll('[data-t]').forEach((el) => { const v = T[el.dataset.t]; if (typeof v === 'string') el.textContent = v; });
-function setGoal() { $('goal').textContent = T.goal(fmt(targetSec)); $('target').textContent = T.target(fmt(targetSec)); }
+function setGoal() { $('goal').textContent = T.goalTime(fmt(targetSec)); $('target').textContent = T.target(fmt(targetSec)); }
 const fmt = (n) => (Math.round(n * 10) / 10).toString();
 
 // ---------- выбор бегуна ----------
@@ -169,30 +169,26 @@ function showResult(r) {
   // крупный баннер с протеиновыми йогуртами — в конце каждого забега, чтобы запомнилась этикетка
   let html = `<div class="promo-banner"><img src="${BANNER}" alt="${esc(T.bannerTitle)}">
     <div class="promo-cap"><b>${esc(T.bannerTitle)}</b><span>${esc(T.bannerSub)}</span></div></div>`;
+  const head = (title, sub) => `<div class="res-head">${time && r.outcome !== 'out' ? `<span class="time-chip">${esc(time)} ${esc(T.sec)}</span>` : ''}
+      <h1>${esc(title)}</h1>${sub ? `<p class="result-text">${esc(sub)}</p>` : ''}</div>`;
+  const again = `<button class="btn primary" id="btn-again">${esc(T.again)}</button>`;
   if (r.outcome === 'out') {
-    html += `<h1>${esc(T.outTitle)}</h1><p class="result-text">${esc(T.outText)}</p>`;
+    html += head(T.outTitle, T.outText) + again;
+  } else if (r.outcome === 'yogurt') {
+    html += head(T.winTitle) + `<div class="gift"><div class="gift-title">${esc(T.winText(r.qty ?? 2))}</div>${codeBlock(T.codeLabel, r.code)}
+      <p class="note">${esc(T.winHow)}</p></div>` + again;
+  } else if (r.outcome === 'promo') {
+    const title = r.reason === 'already_won' ? T.promoTitleWon : r.reason === 'stock_out' ? T.promoTitleStock : T.promoTitleSlow;
+    const text = r.reason === 'already_won' ? T.promoTextWon : r.reason === 'stock_out' ? T.promoTextStock : T.promoTextSlow(fmt(r.targetSec ?? targetSec));
+    html += head(title, text) + `<div class="gift"><div class="gift-title">${esc(T.promoGift)}</div><div class="gift-where">${esc(T.promoWhere)}</div>${codeBlock(r.repeat ? T.promoRepeat : T.promoLabel, r.code)}</div>
+      <div class="btn-row">${again}<a class="btn secondary" href="https://panatsea.net" target="_blank" rel="noopener">${esc(T.toSite)}</a></div>`;
+  } else if (r.outcome === 'none') {
+    html += head(T.noneTitle, T.noneText) + again;
+  } else if (r.outcome === 'rejected') {
+    html += head(T.outTitle, T.rejected) + again;
   } else {
-    html += `<p class="result-time">${esc(T.yourTime(time))}</p>`;
-    if (r.outcome === 'yogurt') {
-      html += `<h1>${esc(T.winTitle)}</h1>
-        <div class="gift"><div class="gift-title">${esc(T.winText(r.qty ?? 2))}</div>${codeBlock(T.codeLabel, r.code)}</div>
-        <p class="note">${esc(T.winHow)}</p>`;
-    } else if (r.outcome === 'promo') {
-      const title = r.reason === 'already_won' ? T.promoTitleWon : r.reason === 'stock_out' ? T.promoTitleStock : T.promoTitleSlow;
-      const text = r.reason === 'already_won' ? T.promoTextWon : r.reason === 'stock_out' ? T.promoTextStock : T.promoTextSlow(fmt(r.targetSec ?? targetSec));
-      html += `<h1>${esc(title)}</h1><p class="result-text">${esc(text)}</p>
-        <div class="gift"><div class="gift-title">${esc(T.promoGift)}</div>${codeBlock(r.repeat ? T.promoRepeat : T.promoLabel, r.code)}</div>
-        <a class="btn secondary" style="display:block;text-decoration:none" href="https://panatsea.net" target="_blank" rel="noopener">${esc(T.toSite)}</a>`;
-    } else if (r.outcome === 'none') {
-      html += `<h1>${esc(T.noneTitle)}</h1><p class="result-text">${esc(T.noneText)}</p>`;
-    } else if (r.outcome === 'rejected') {
-      html += `<h1>${esc(T.outTitle)}</h1><p class="result-text">${esc(T.rejected)}</p>`;
-    } else {
-      html += `<div class="result-big">${esc(time)} ${esc(T.sec)}</div><p class="result-text">${esc(T.offline)}</p>`;
-    }
+    html += head(T.promoTitleWon) + again;   // тестовый режим без сервера: только время
   }
-  if (r.cups != null) html += `<p class="stats">${esc(T.cups(r.cups))}</p>`;
-  html += `<button class="btn primary" id="btn-again" style="margin-top:10px">${esc(T.again)}</button>`;
   $('result').innerHTML = html;
   $('btn-again').addEventListener('click', startRun);
   $('copy')?.addEventListener('click', async () => {

@@ -7,7 +7,7 @@
   <title>Առավոտյան վազք — Panatsea</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@400;500;600;700&family=Noto+Serif+Armenian:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="brand/tokens.css">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -28,26 +28,27 @@
     </div>
 
     <section class="screen" id="screen-start">
-      <div class="card">
+      <div class="card start">
         <img class="logo" src="assets/logo/panatsea-logo.svg" alt="Panatsea">
         <h1 data-t="title"></h1>
-        <p class="lead" data-t="tagline"></p>
         <div class="prize">
           <span class="ph p12"><img src="products/p12.jpg" alt="Պրոտեինային յոգուրտ՝ մանգո և չիա"></span>
           <span class="ph p13"><img src="products/p13.jpg" alt="Պրոտեինային յոգուրտ՝ բանան և ելակ"></span>
           <span class="ph p14"><img src="products/p14.jpg" alt="Պրոտեինային յոգուրտ՝ պիստակ"></span>
         </div>
-        <p class="goal" id="goal"></p>
-        <h2 data-t="choose"></h2>
+        <div class="goal-box">
+          <div class="goal-time"><span data-t="goalLabel"></span><b id="goal"></b></div>
+          <div class="goal-gift"><span data-t="giftLabel"></span><b data-t="giftText"></b></div>
+        </div>
+        <div class="section-label" data-t="choose"></div>
         <div class="runners">
           <button class="runner-btn" data-runner="girl" aria-pressed="true"><canvas width="120" height="120"></canvas><span data-t="girl"></span></button>
           <button class="runner-btn" data-runner="boy" aria-pressed="false"><canvas width="120" height="120"></canvas><span data-t="boy"></span></button>
         </div>
-        <ul class="hints">
-          <li><span class="dot">1×</span><span data-t="hintTap"></span></li>
-          <li><span class="dot">2×</span><span data-t="hintDouble"></span></li>
-          <li><span class="dot cup"></span><span data-t="hintEnergy"></span></li>
-        </ul>
+        <div class="chips">
+          <span class="chip"><b>1×</b><span data-t="hintTap"></span></span>
+          <span class="chip"><b>2×</b><span data-t="hintDouble"></span></span>
+        </div>
         <button class="btn primary" id="btn-start" data-t="start"></button>
         <a class="rules" href="#" data-t="rules"></a>
       </div>
