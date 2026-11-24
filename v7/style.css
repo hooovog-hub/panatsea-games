@@ -107,3 +107,12 @@ h2 { font-size: 14px; font-weight: 500; margin: 18px 0 10px; color: var(--pn-tex
   .hints { margin: 10px 0 12px; }
   .runner-btn canvas { width: 70px; height: 70px; }
 }
+
+/* кнопка звука — внизу справа, не мешает тапам по игре */
+.sound-btn {
+  position: absolute; right: 14px; bottom: calc(env(safe-area-inset-bottom) + 14px); z-index: 15;
+  width: 42px; height: 42px; border-radius: 50%; border: 0; cursor: pointer;
+  background: rgba(255,255,255,.88); color: var(--pn-logo); display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 14px rgba(29,42,33,.12);
+}
+.sound-btn[aria-pressed="false"] { color: var(--pn-text-muted); }

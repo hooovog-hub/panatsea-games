@@ -87,7 +87,34 @@ window.addEventListener('keydown', (e) => {
 });
 
 // ---------- старт ----------
+// ---------- музыка ----------
+// Фоновая музыка (mp3/music (AA).mp3). Включается по первому касанию «Старт»
+// (браузеры не дают играть звук без действия пользователя), играет по кругу.
+const music = new Audio('audio/music.mp3');
+music.loop = true; music.volume = 0.55; music.preload = 'auto';
+let muted = false;
+try { muted = localStorage.getItem('pn_muted') === '1'; } catch {}
+function paintSound() {
+  const b = $('btn-sound'); if (!b) return;
+  b.setAttribute('aria-pressed', String(!muted));
+  b.innerHTML = muted
+    ? '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="m22 9-6 6M16 9l6 6"/></svg>'
+    : '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
+  b.setAttribute('aria-label', muted ? 'Միացնել ձայնը' : 'Անջատել ձայնը');
+}
+function playMusic() { if (!muted) music.play().catch(() => {}); }
+$('btn-sound')?.addEventListener('click', (e) => {
+  e.stopPropagation();
+  muted = !muted;
+  try { localStorage.setItem('pn_muted', muted ? '1' : '0'); } catch {}
+  if (muted) music.pause(); else playMusic();
+  paintSound();
+});
+document.addEventListener('visibilitychange', () => { if (document.hidden) music.pause(); else if (mode !== 'menu') playMusic(); });
+paintSound();
+
 async function startRun() {
+  playMusic();
   const btn = $('btn-start');
   btn.disabled = true; btn.textContent = T.loading;
   token = null; online = true;
