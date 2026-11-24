@@ -35,20 +35,29 @@ body {
 .screen[hidden], #hud[hidden], .toast[hidden] { display: none; }
 .card {
   width: 100%; max-width: 400px; margin: auto;
-  background: rgba(255,255,255,.94); border-radius: 24px; padding: 24px 22px 20px;
-  text-align: center; box-shadow: 0 10px 40px rgba(29,42,33,.08);
+  /* матовое стекло: сквозь карточку видна сцена Еревана, текст остаётся читаемым */
+  background: rgba(255,255,255,.58); border-radius: 24px; padding: 24px 22px 20px;
+  -webkit-backdrop-filter: blur(16px) saturate(1.25); backdrop-filter: blur(16px) saturate(1.25);
+  border: 1px solid rgba(255,255,255,.65);
+  text-align: center; box-shadow: 0 10px 40px rgba(29,42,33,.10);
 }
 .logo { height: 22px; width: auto; display: block; margin: 0 auto 14px; }
 h1 { font-family: var(--pn-font-head); font-weight: 600; font-size: 30px; line-height: 1.15; margin: 0 0 8px; color: var(--pn-logo); }
 h2 { font-size: 14px; font-weight: 500; margin: 18px 0 10px; color: var(--pn-text-muted); }
 .lead { margin: 0 0 14px; font-size: 15px; line-height: 1.45; }
 .goal { margin: 10px 0 0; font-size: 15px; line-height: 1.45; color: var(--pn-text-strong); font-weight: 500; }
-.prize { display: flex; justify-content: center; gap: 6px; }
-.prize img { width: 84px; height: 76px; object-fit: contain; }
+.prize { display: flex; justify-content: center; gap: 8px; }
+/* настоящие фото продуктов: одинаковые плитки, стаканчик в каждой — одного размера
+   (на исходных фото p13 снят мельче, поэтому его увеличиваем сильнее) */
+.ph { width: 84px; height: 84px; border-radius: 18px; overflow: hidden; background: var(--pn-photo-bg); flex: none; }
+.ph img { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(var(--z, 1)); transform-origin: 50% var(--oy, 58%); }
+.ph.p12 { --z: 1.22; --oy: 60%; }
+.ph.p13 { --z: 1.7; --oy: 57%; }
+.ph.p14 { --z: 1.18; --oy: 57%; }
 
 .runners { display: flex; gap: 10px; justify-content: center; }
 .runner-btn {
-  flex: 1; max-width: 150px; border: 2px solid transparent; background: var(--pn-bg-mint);
+  flex: 1; max-width: 150px; border: 2px solid transparent; background: rgba(255,255,255,.55);
   border-radius: 18px; padding: 8px 6px 10px; cursor: pointer; font: inherit; color: var(--pn-text-strong);
   display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 15px;
 }

@@ -173,7 +173,7 @@ function showResult(r) {
     html += `<p class="result-time">${esc(T.yourTime(time))}</p>`;
     if (r.outcome === 'yogurt') {
       html += `<h1>${esc(T.winTitle)}</h1>
-        <div class="prize" style="margin-top:10px">${[12, 13, 14].map((n) => `<img src="${PHOTOS[n]}" alt="">`).join('')}</div>
+        <div class="prize" style="margin-top:10px">${[12, 13, 14].map((n) => `<span class="ph p${n}"><img src="${PHOTOS[n]}" alt=""></span>`).join('')}</div>
         <div class="gift"><div class="gift-title">${esc(T.winText(r.qty ?? 2))}</div>${codeBlock(T.codeLabel, r.code)}</div>
         <p class="note">${esc(T.winHow)}</p>`;
     } else if (r.outcome === 'promo') {
@@ -200,7 +200,7 @@ function showResult(r) {
   show('screen-result');
 }
 
-const PHOTOS = { 12: 'art/cup_p12.webp', 13: 'art/cup_p13.webp', 14: 'art/cup_p14.webp' };
+const PHOTOS = { 12: 'products/p12.jpg', 13: 'products/p13.jpg', 14: 'products/p14.jpg' };   // настоящие фото продуктов
 
 let toastTimer;
 function toast(msg) {
