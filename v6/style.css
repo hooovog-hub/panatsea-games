@@ -1,0 +1,109 @@
+/* Стили интерфейса. Цвета — только переменные из brand/tokens.css. */
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; overflow: hidden; background: var(--pn-ill-sky-low); }
+body {
+  font-family: var(--pn-font-text); color: var(--pn-text);
+  -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none;
+  touch-action: manipulation;
+}
+#app { position: fixed; inset: 0; }
+#game { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; }
+
+/* HUD */
+#hud {
+  position: absolute; left: 0; right: 0; top: 0;
+  padding: calc(env(safe-area-inset-top) + 14px) 16px 0;
+  display: grid; grid-template-columns: 1fr auto; gap: 10px 16px; align-items: start;
+  pointer-events: none;
+}
+.hud-label { font-size: 12px; color: var(--pn-text-muted); letter-spacing: .02em; }
+.bar { margin-top: 6px; height: 10px; border-radius: 6px; background: rgba(255,255,255,.7); overflow: hidden; max-width: 220px; }
+.bar-fill { height: 100%; width: 100%; background: var(--pn-accent); border-radius: 6px; transition: width .2s, background-color .2s; }
+.bar-fill.low { background: var(--pn-coral); }
+.hud-time { text-align: right; }
+.time { font-size: 28px; font-weight: 600; color: var(--pn-text-strong); font-variant-numeric: tabular-nums; line-height: 1; }
+.time.over { color: var(--pn-coral); }
+.progress { grid-column: 1 / -1; height: 3px; background: rgba(255,255,255,.6); border-radius: 2px; overflow: hidden; }
+.progress-fill { height: 100%; width: 0; background: var(--pn-logo); opacity: .5; }
+
+/* Экраны */
+.screen {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  padding: calc(env(safe-area-inset-top) + 16px) 16px calc(env(safe-area-inset-bottom) + 16px);
+  overflow-y: auto;
+}
+.screen[hidden], #hud[hidden], .toast[hidden] { display: none; }
+.card {
+  width: 100%; max-width: 400px; margin: auto;
+  background: rgba(255,255,255,.94); border-radius: 24px; padding: 24px 22px 20px;
+  text-align: center; box-shadow: 0 10px 40px rgba(29,42,33,.08);
+}
+.logo { height: 22px; width: auto; display: block; margin: 0 auto 14px; }
+h1 { font-family: var(--pn-font-head); font-weight: 600; font-size: 30px; line-height: 1.15; margin: 0 0 8px; color: var(--pn-logo); }
+h2 { font-size: 14px; font-weight: 500; margin: 18px 0 10px; color: var(--pn-text-muted); }
+.lead { margin: 0 0 14px; font-size: 15px; line-height: 1.45; }
+.goal { margin: 10px 0 0; font-size: 15px; line-height: 1.45; color: var(--pn-text-strong); font-weight: 500; }
+.prize { display: flex; justify-content: center; gap: 6px; }
+.prize img { width: 84px; height: 76px; object-fit: contain; }
+
+.runners { display: flex; gap: 10px; justify-content: center; }
+.runner-btn {
+  flex: 1; max-width: 150px; border: 2px solid transparent; background: var(--pn-bg-mint);
+  border-radius: 18px; padding: 8px 6px 10px; cursor: pointer; font: inherit; color: var(--pn-text-strong);
+  display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 15px;
+}
+.runner-btn canvas { width: 84px; height: 84px; }
+.runner-btn[aria-pressed="true"] { border-color: var(--pn-accent); background: var(--pn-bg); }
+
+.hints { list-style: none; padding: 0; margin: 16px 0 18px; text-align: left; font-size: 14px; color: var(--pn-text); }
+.hints li { display: flex; align-items: center; gap: 10px; margin: 7px 0; }
+.dot {
+  flex: none; width: 30px; height: 30px; border-radius: 50%; background: var(--pn-bg-mint);
+  display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; color: var(--pn-accent);
+}
+.dot.cup { background: var(--pn-cup-mango); }
+
+.btn {
+  width: 100%; border: 0; border-radius: 14px; padding: 15px 18px; font: inherit; font-size: 17px; font-weight: 600;
+  cursor: pointer; transition: background-color .15s, transform .1s;
+}
+.btn:active { transform: scale(.98); }
+.btn.primary { background: var(--pn-accent); color: var(--pn-bg); }
+.btn.primary:hover { background: var(--pn-accent-hover); }
+.btn.secondary { background: var(--pn-bg-mint); color: var(--pn-logo); margin-top: 8px; }
+.btn[disabled] { opacity: .6; cursor: default; }
+.rules { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--pn-text-muted); }
+
+/* Отсчёт */
+#screen-count { pointer-events: none; }
+.count { font-family: var(--pn-font-head); font-size: 96px; color: var(--pn-logo); animation: pop .6s ease-out; }
+@keyframes pop { from { transform: scale(1.4); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+/* Результат */
+.result-time { font-size: 15px; color: var(--pn-text-muted); margin: 0 0 4px; }
+.result-big { font-family: var(--pn-font-head); font-size: 44px; color: var(--pn-logo); margin: 4px 0 2px; font-variant-numeric: tabular-nums; }
+.result-text { font-size: 15px; line-height: 1.45; margin: 10px 0 14px; }
+.gift { background: var(--pn-bg-mint); border-radius: 16px; padding: 14px; margin: 10px 0 14px; }
+.gift-title { font-size: 15px; font-weight: 600; color: var(--pn-logo); line-height: 1.4; }
+.code-label { font-size: 12px; color: var(--pn-text-muted); margin-top: 10px; }
+.code {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 22px; letter-spacing: .08em; color: var(--pn-logo);
+  background: var(--pn-bg); border: 1.5px dashed var(--pn-line); border-radius: 10px; padding: 10px; margin: 6px 0 8px;
+  user-select: all; -webkit-user-select: all;
+}
+.copy { background: none; border: 0; color: var(--pn-accent); font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; padding: 4px; }
+.note { font-size: 13px; color: var(--pn-text-muted); margin: 8px 0 0; }
+.stats { font-size: 13px; color: var(--pn-text-muted); margin: 12px 0 6px; }
+
+.toast {
+  position: absolute; left: 50%; bottom: calc(env(safe-area-inset-bottom) + 24px); transform: translateX(-50%);
+  background: var(--pn-logo); color: var(--pn-bg); padding: 10px 16px; border-radius: 12px; font-size: 14px; max-width: 90%;
+}
+
+@media (max-height: 700px) {
+  .card { padding: 18px 18px 16px; }
+  h1 { font-size: 26px; }
+  .prize img { width: 60px; height: 60px; }
+  .hints { margin: 10px 0 12px; }
+  .runner-btn canvas { width: 70px; height: 70px; }
+}

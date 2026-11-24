@@ -1,0 +1,72 @@
+/* Panatsea — цветовые токены для игры.
+   Взяты с panatsea.net, логотипа и этикетки (24.11.2026). Описание — brand/colors.md */
+:root {
+  /* основа (сайт) */
+  --pn-accent: #06A990;
+  --pn-accent-hover: #058F7B;
+  --pn-text: #434343;
+  --pn-text-strong: #2C2C2C;
+  --pn-text-muted: #666666;
+  --pn-bg: #FFFFFF;
+  --pn-bg-soft: #EBF7FF;
+  --pn-bg-mint: #E8F6F9;
+  --pn-line: #87CBD7;
+  --pn-coral: #F05638;
+
+  /* логотип */
+  --pn-logo: #1D2A21;
+
+  /* цвета линеек (сайт) */
+  --pn-line-green: #06A990;
+  --pn-line-coral: #F05638;
+  --pn-line-yellow: #FFBF1A;
+  --pn-line-pink: #F03860;
+  --pn-line-sky: #50CFE0;
+  --pn-line-blue: #5080E0;
+
+  /* шрифты: платные оригиналы → бесплатная замена */
+  --pn-font-head: "PP Editorial New", "Noto Serif Armenian", Georgia, serif;
+  --pn-font-text: "Suisse Intl", "Noto Sans Armenian", system-ui, sans-serif;
+}
+
+/* упаковка протеиновых йогуртов p12–p14 — приблизительно по фото, см. colors.md */
+:root {
+  --pn-cup-mango: #C9A3D8;
+  --pn-cup-mango-accent: #8A55B0;
+  --pn-cup-berry: #9FCBE8;
+  --pn-cup-berry-accent: #E8536B;
+  --pn-cup-pistachio: #A9C28A;
+  --pn-cup-pistachio-accent: #6F7F45;
+  --pn-photo-bg: #F6E6E8;
+}
+
+/* иллюстрация игры «Забег» — добавлено 24.11.2026, подтвердить у владельца (OPEN_QUESTIONS.md, п. 13) */
+:root {
+  --pn-ill-sky-top: #BBD4E5;     /* небо — мягкий голубой, приглушённый */
+  --pn-ill-sky-low: #E9F1F5;
+  --pn-ill-haze: #D9E4EB;        /* воздушная дымка для дальних планов */
+  --pn-ill-sun: #FFF0CF;
+  --pn-ill-ararat: #CFD9E6;
+  --pn-ill-snow: #FFFFFF;
+  --pn-ill-tuff: #E9BCA8;        /* розовый туф ереванских домов */
+  --pn-ill-tuff-far: #F1D3C4;
+  --pn-ill-window: #FBEDE4;
+  --pn-ill-street: #EFE6E1;
+  --pn-ill-road: #D9CCC6;
+  --pn-ill-skin: #E2AD8A;
+  --pn-ill-skin-shade: #C98E6A;
+  --pn-ill-hair: #3B2A22;
+}
+
+/* бегунья по референсу владельца (24.11.2026): легинсы и носки */
+:root {
+  --pn-ill-leggings: #3B3E52;
+  --pn-ill-sock: #FFFFFF;
+}
+
+/* дальний горизонт города (силуэты) — 24.11.2026 */
+:root {
+  --pn-ill-city-far: #DCDCDC;
+  --pn-ill-city-far-2: #D1D3D6;
+  --pn-ill-city-window: #E9EDF0;
+}

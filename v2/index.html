@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="hy">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#BBD4E5">
+  <title>Առավոտյան վազք — Panatsea</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@400;500;600;700&family=Noto+Serif+Armenian:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="brand/tokens.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <canvas id="game" aria-label="Խաղ"></canvas>
+
+    <div id="hud" hidden>
+      <div class="hud-energy">
+        <span class="hud-label" data-t="energy"></span>
+        <div class="bar"><div class="bar-fill" id="energy"></div></div>
+      </div>
+      <div class="hud-time">
+        <div class="time" id="timer">0.0</div>
+        <div class="hud-label" id="target"></div>
+      </div>
+      <div class="progress"><div class="progress-fill" id="progress"></div></div>
+    </div>
+
+    <section class="screen" id="screen-start">
+      <div class="card">
+        <img class="logo" src="assets/logo/panatsea-logo.svg" alt="Panatsea">
+        <h1 data-t="title"></h1>
+        <p class="lead" data-t="tagline"></p>
+        <div class="prize">
+          <img src="art/cup_p12.webp" alt="">
+          <img src="art/cup_p13.webp" alt="">
+          <img src="art/cup_p14.webp" alt="">
+        </div>
+        <p class="goal" id="goal"></p>
+        <h2 data-t="choose"></h2>
+        <div class="runners">
+          <button class="runner-btn" data-runner="girl" aria-pressed="true"><canvas width="120" height="120"></canvas><span data-t="girl"></span></button>
+          <button class="runner-btn" data-runner="boy" aria-pressed="false"><canvas width="120" height="120"></canvas><span data-t="boy"></span></button>
+        </div>
+        <ul class="hints">
+          <li><span class="dot">1×</span><span data-t="hintTap"></span></li>
+          <li><span class="dot">2×</span><span data-t="hintDouble"></span></li>
+          <li><span class="dot cup"></span><span data-t="hintEnergy"></span></li>
+        </ul>
+        <button class="btn primary" id="btn-start" data-t="start"></button>
+        <a class="rules" href="#" data-t="rules"></a>
+      </div>
+    </section>
+
+    <section class="screen" id="screen-count" hidden>
+      <div class="count" id="count"></div>
+    </section>
+
+    <section class="screen" id="screen-result" hidden>
+      <div class="card" id="result"></div>
+    </section>
+
+    <div class="toast" id="toast" hidden></div>
+  </div>
+  <script type="module" src="js/main.js"></script>
+  <a id="pn-back" href="../">← Варианты</a>
+  <style>#pn-back{position:fixed;left:12px;bottom:calc(env(safe-area-inset-bottom) + 12px);z-index:20;background:rgba(29,42,33,.82);color:#fff;font:500 13px system-ui,sans-serif;padding:8px 12px;border-radius:10px;text-decoration:none}
+  body:has(#hud:not([hidden])) #pn-back{display:none}</style>
+  <script>window.PN_STATIC = 1;</script>
+</body>
+</html>
