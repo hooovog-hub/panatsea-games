@@ -70,3 +70,8 @@
   --pn-ill-city-far-2: #D1D3D6;
   --pn-ill-city-window: #E9EDF0;
 }
+
+/* внешние сервисы (кнопки «поделиться») — 27.11.2026 */
+:root {
+  --pn-ext-whatsapp: #25D366;
+}

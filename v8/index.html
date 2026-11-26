@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="hy">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#BBD4E5">
+  <title>Առավոտյան վազք — Panatsea</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="brand/tokens.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <canvas id="game" aria-label="Խաղ"></canvas>
+
+    <div id="hud" hidden>
+      <div class="hud-score">
+        <span class="hud-label" data-t="points"></span>
+        <div class="score" id="score">0</div>
+      </div>
+      <div class="hud-time">
+        <div class="hud-goal"><b>1500</b> <span data-t="goalShort"></span></div>
+        <div class="hud-label" id="cups"></div>
+      </div>
+      <div class="progress"><div class="progress-fill" id="progress"></div></div>
+    </div>
+
+    <section class="screen" id="screen-start">
+      <div class="card start">
+        <img class="logo" src="assets/logo/panatsea-logo.svg" alt="Panatsea">
+        <h1 data-t="title"></h1>
+        <div class="prize">
+          <span class="ph p12"><img src="products/p12.jpg" alt="Պրոտեինային յոգուրտ՝ մանգո և չիա"></span>
+          <span class="ph p13"><img src="products/p13.jpg" alt="Պրոտեինային յոգուրտ՝ բանան և ելակ"></span>
+          <span class="ph p14"><img src="products/p14.jpg" alt="Պրոտեինային յոգուրտ՝ պիստակ"></span>
+        </div>
+        <div class="rules-grid">
+          <div class="rule good"><b>+50</b><span data-t="ruleCup"></span></div>
+          <div class="rule bad"><b>−100</b><span data-t="ruleHit"></span></div>
+          <div class="rule prize"><b>1500</b><span data-t="ruleWin"></span></div>
+          <div class="rule"><b>200</b><span data-t="rulePromo"></span></div>
+        </div>
+        <button class="phone-line" id="phone-line" type="button" hidden></button>
+        <div class="section-label" data-t="choose"></div>
+        <div class="runners">
+          <button class="runner-btn" data-runner="girl" aria-pressed="true"><canvas width="120" height="120"></canvas><span data-t="girl"></span></button>
+          <button class="runner-btn" data-runner="boy" aria-pressed="false"><canvas width="120" height="120"></canvas><span data-t="boy"></span></button>
+        </div>
+        <div class="chips">
+          <span class="chip"><b>1×</b><span data-t="hintTap"></span></span>
+          <span class="chip"><b>2×</b><span data-t="hintDouble"></span></span>
+        </div>
+        <button class="btn primary" id="btn-start" data-t="start"></button>
+        <a class="rules" href="#" data-t="rules"></a>
+      </div>
+    </section>
+
+    <section class="screen" id="screen-phone" hidden>
+      <form class="card phone-card" id="phone-form" novalidate>
+        <h1 data-t="phoneTitle"></h1>
+        <p class="result-text" data-t="phoneText"></p>
+        <label class="phone-input"><span>+374</span><input id="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="XX XXX XXX" maxlength="16"></label>
+        <p class="field-error" id="phone-error" hidden></p>
+        <button class="btn primary" type="submit" data-t="phoneGo"></button>
+        <p class="note" data-t="phoneNote"></p>
+      </form>
+    </section>
+
+    <section class="screen" id="screen-count" hidden>
+      <div class="count" id="count"></div>
+    </section>
+
+    <section class="screen" id="screen-result" hidden>
+      <div class="card" id="result"></div>
+    </section>
+
+    <button class="sound-btn" id="btn-sound" type="button" aria-label="Ձայն"></button>
+    <div class="toast" id="toast" hidden></div>
+  </div>
+  <script type="module" src="js/main.js"></script>
+  <a id="pn-back" href="../">← Варианты</a>
+  <style>#pn-back{position:fixed;left:12px;bottom:calc(env(safe-area-inset-bottom) + 12px);z-index:20;background:rgba(29,42,33,.82);color:#fff;font:500 13px system-ui,sans-serif;padding:8px 12px;border-radius:10px;text-decoration:none}
+  body:has(#hud:not([hidden])) #pn-back{display:none}</style>
+  <script>window.PN_STATIC = 1;</script>
+</body>
+</html>
